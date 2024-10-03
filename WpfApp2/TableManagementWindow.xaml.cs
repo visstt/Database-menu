@@ -30,7 +30,7 @@ namespace WpfApp2
         {
             InitializeComponent();
             selectedTable = tableName;
-            string connectionString = "Server=DESKTOP-PFBB33O;Database=Nochnie_Volki_Orenburg;Trusted_Connection=True;"; // Строка подключения
+            string connectionString = "Server=DESKTOP-B39KRR8;Database=Nochnie_Volki_Orenburg;Trusted_Connection=True;"; // Строка подключения
             connection = new SqlConnection(connectionString);
             LoadTableData();
         }
