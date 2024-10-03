@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8912f8d3852e4326bfb52fc022b6816a" Name="Diagram1">
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.Customer" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.DiscountSystem" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.Employee" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.EmployeePosition" Width="1.5" PointX="1.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.EmployeeStatus" Width="1.5" PointX="1.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.Motorcycle" Width="1.5" PointX="6" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.MotorcycleBrand" Width="1.5" PointX="3.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.MotorcycleType" Width="1.5" PointX="3.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.Payment" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.PenaltySystem" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.Rental" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.RentalMotorcycle" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.RentalStatus" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Payment__Custome__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Rental__Customer__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Employee__Positi__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Employee__Status__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Rental__Employee__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Motorcycl__Brand__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Motorcycl__TypeI__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__RentalMot__Motor__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Payment__RentalI__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Rental__StatusID__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__RentalMot__Renta__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Nochnie_Volki_OrenburgModel.RentalPenalty" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

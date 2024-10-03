@@ -1,0 +1,869 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Nochnie_Volki_OrenburgModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DriverLicense" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiscountSystem">
+          <Key>
+            <PropertyRef Name="DiscountID" />
+          </Key>
+          <Property Name="DiscountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscountName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DiscountPercent" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeePosition">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Salary" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Motorcycle">
+          <Key>
+            <PropertyRef Name="MotorcycleID" />
+          </Key>
+          <Property Name="MotorcycleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="DailyRate" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IsBooked" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MotorcycleBrand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MotorcycleType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RentalID" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PenaltySystem">
+          <Key>
+            <PropertyRef Name="PenaltyID" />
+          </Key>
+          <Property Name="PenaltyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PenaltyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PenaltyAmount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="RentalID" />
+          </Key>
+          <Property Name="RentalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentalMotorcycle">
+          <Key>
+            <PropertyRef Name="RentalMotorcycleID" />
+          </Key>
+          <Property Name="RentalMotorcycleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RentalID" Type="int" Nullable="false" />
+          <Property Name="MotorcycleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentalPenalty">
+          <Key>
+            <PropertyRef Name="RentalID" />
+            <PropertyRef Name="PenaltyID" />
+          </Key>
+          <Property Name="RentalID" Type="int" Nullable="false" />
+          <Property Name="PenaltyID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentalStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Employee__Positi__4CA06362">
+          <End Role="EmployeePosition" Type="Self.EmployeePosition" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePosition">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Status__4D94879B">
+          <End Role="EmployeeStatus" Type="Self.EmployeeStatus" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Motorcycl__Brand__3C69FB99">
+          <End Role="MotorcycleBrand" Type="Self.MotorcycleBrand" Multiplicity="1" />
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotorcycleBrand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="Motorcycle">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Motorcycl__TypeI__3D5E1FD2">
+          <End Role="MotorcycleType" Type="Self.MotorcycleType" Multiplicity="1" />
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotorcycleType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Motorcycle">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__Custome__6383C8BA">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__RentalI__628FA481">
+          <End Role="Rental" Type="Self.Rental" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rental">
+              <PropertyRef Name="RentalID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="RentalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rental__Customer__52593CB8">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rental__Employee__5441852A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rental__StatusID__534D60F1">
+          <End Role="RentalStatus" Type="Self.RentalStatus" Multiplicity="1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentalStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RentalMot__Motor__5812160E">
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1" />
+          <End Role="RentalMotorcycle" Type="Self.RentalMotorcycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Motorcycle">
+              <PropertyRef Name="MotorcycleID" />
+            </Principal>
+            <Dependent Role="RentalMotorcycle">
+              <PropertyRef Name="MotorcycleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RentalMot__Renta__571DF1D5">
+          <End Role="Rental" Type="Self.Rental" Multiplicity="1" />
+          <End Role="RentalMotorcycle" Type="Self.RentalMotorcycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rental">
+              <PropertyRef Name="RentalID" />
+            </Principal>
+            <Dependent Role="RentalMotorcycle">
+              <PropertyRef Name="RentalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RentalPen__Penal__5DCAEF64">
+          <End Role="PenaltySystem" Type="Self.PenaltySystem" Multiplicity="1" />
+          <End Role="RentalPenalty" Type="Self.RentalPenalty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PenaltySystem">
+              <PropertyRef Name="PenaltyID" />
+            </Principal>
+            <Dependent Role="RentalPenalty">
+              <PropertyRef Name="PenaltyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RentalPen__Renta__5CD6CB2B">
+          <End Role="Rental" Type="Self.Rental" Multiplicity="1" />
+          <End Role="RentalPenalty" Type="Self.RentalPenalty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rental">
+              <PropertyRef Name="RentalID" />
+            </Principal>
+            <Dependent Role="RentalPenalty">
+              <PropertyRef Name="RentalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Nochnie_Volki_OrenburgModelContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiscountSystem" EntityType="Self.DiscountSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeePosition" EntityType="Self.EmployeePosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeStatus" EntityType="Self.EmployeeStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Motorcycle" EntityType="Self.Motorcycle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MotorcycleBrand" EntityType="Self.MotorcycleBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MotorcycleType" EntityType="Self.MotorcycleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PenaltySystem" EntityType="Self.PenaltySystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rental" EntityType="Self.Rental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentalMotorcycle" EntityType="Self.RentalMotorcycle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentalPenalty" EntityType="Self.RentalPenalty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentalStatus" EntityType="Self.RentalStatus" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Employee__Positi__4CA06362" Association="Self.FK__Employee__Positi__4CA06362">
+            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Status__4D94879B" Association="Self.FK__Employee__Status__4D94879B">
+            <End Role="EmployeeStatus" EntitySet="EmployeeStatus" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Motorcycl__Brand__3C69FB99" Association="Self.FK__Motorcycl__Brand__3C69FB99">
+            <End Role="MotorcycleBrand" EntitySet="MotorcycleBrand" />
+            <End Role="Motorcycle" EntitySet="Motorcycle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Motorcycl__TypeI__3D5E1FD2" Association="Self.FK__Motorcycl__TypeI__3D5E1FD2">
+            <End Role="MotorcycleType" EntitySet="MotorcycleType" />
+            <End Role="Motorcycle" EntitySet="Motorcycle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__Custome__6383C8BA" Association="Self.FK__Payment__Custome__6383C8BA">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__RentalI__628FA481" Association="Self.FK__Payment__RentalI__628FA481">
+            <End Role="Rental" EntitySet="Rental" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rental__Customer__52593CB8" Association="Self.FK__Rental__Customer__52593CB8">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rental__Employee__5441852A" Association="Self.FK__Rental__Employee__5441852A">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rental__StatusID__534D60F1" Association="Self.FK__Rental__StatusID__534D60F1">
+            <End Role="RentalStatus" EntitySet="RentalStatus" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentalMot__Motor__5812160E" Association="Self.FK__RentalMot__Motor__5812160E">
+            <End Role="Motorcycle" EntitySet="Motorcycle" />
+            <End Role="RentalMotorcycle" EntitySet="RentalMotorcycle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentalMot__Renta__571DF1D5" Association="Self.FK__RentalMot__Renta__571DF1D5">
+            <End Role="Rental" EntitySet="Rental" />
+            <End Role="RentalMotorcycle" EntitySet="RentalMotorcycle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentalPen__Penal__5DCAEF64" Association="Self.FK__RentalPen__Penal__5DCAEF64">
+            <End Role="PenaltySystem" EntitySet="PenaltySystem" />
+            <End Role="RentalPenalty" EntitySet="RentalPenalty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentalPen__Renta__5CD6CB2B" Association="Self.FK__RentalPen__Renta__5CD6CB2B">
+            <End Role="Rental" EntitySet="Rental" />
+            <End Role="RentalPenalty" EntitySet="RentalPenalty" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Nochnie_Volki_OrenburgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DriverLicense" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK__Payment__Custome__6383C8BA" FromRole="Customer" ToRole="Payment" />
+          <NavigationProperty Name="Rental" Relationship="Self.FK__Rental__Customer__52593CB8" FromRole="Customer" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="DiscountSystem">
+          <Key>
+            <PropertyRef Name="DiscountID" />
+          </Key>
+          <Property Name="DiscountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscountName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeePosition" Relationship="Self.FK__Employee__Positi__4CA06362" FromRole="Employee" ToRole="EmployeePosition" />
+          <NavigationProperty Name="EmployeeStatus" Relationship="Self.FK__Employee__Status__4D94879B" FromRole="Employee" ToRole="EmployeeStatus" />
+          <NavigationProperty Name="Rental" Relationship="Self.FK__Rental__Employee__5441852A" FromRole="Employee" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="EmployeePosition">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__Positi__4CA06362" FromRole="EmployeePosition" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmployeeStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__Status__4D94879B" FromRole="EmployeeStatus" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Motorcycle">
+          <Key>
+            <PropertyRef Name="MotorcycleID" />
+          </Key>
+          <Property Name="MotorcycleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="DailyRate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IsBooked" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MotorcycleBrand" Relationship="Self.FK__Motorcycl__Brand__3C69FB99" FromRole="Motorcycle" ToRole="MotorcycleBrand" />
+          <NavigationProperty Name="MotorcycleType" Relationship="Self.FK__Motorcycl__TypeI__3D5E1FD2" FromRole="Motorcycle" ToRole="MotorcycleType" />
+          <NavigationProperty Name="RentalMotorcycle" Relationship="Self.FK__RentalMot__Motor__5812160E" FromRole="Motorcycle" ToRole="RentalMotorcycle" />
+        </EntityType>
+        <EntityType Name="MotorcycleBrand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Motorcycle" Relationship="Self.FK__Motorcycl__Brand__3C69FB99" FromRole="MotorcycleBrand" ToRole="Motorcycle" />
+        </EntityType>
+        <EntityType Name="MotorcycleType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Motorcycle" Relationship="Self.FK__Motorcycl__TypeI__3D5E1FD2" FromRole="MotorcycleType" ToRole="Motorcycle" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RentalID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Payment__Custome__6383C8BA" FromRole="Payment" ToRole="Customer" />
+          <NavigationProperty Name="Rental" Relationship="Self.FK__Payment__RentalI__628FA481" FromRole="Payment" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="PenaltySystem">
+          <Key>
+            <PropertyRef Name="PenaltyID" />
+          </Key>
+          <Property Name="PenaltyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PenaltyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PenaltyAmount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Rental" Relationship="Self.RentalPenalty" FromRole="PenaltySystem" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="RentalID" />
+          </Key>
+          <Property Name="RentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Rental__Customer__52593CB8" FromRole="Rental" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Rental__Employee__5441852A" FromRole="Rental" ToRole="Employee" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK__Payment__RentalI__628FA481" FromRole="Rental" ToRole="Payment" />
+          <NavigationProperty Name="RentalStatus" Relationship="Self.FK__Rental__StatusID__534D60F1" FromRole="Rental" ToRole="RentalStatus" />
+          <NavigationProperty Name="RentalMotorcycle" Relationship="Self.FK__RentalMot__Renta__571DF1D5" FromRole="Rental" ToRole="RentalMotorcycle" />
+          <NavigationProperty Name="PenaltySystem" Relationship="Self.RentalPenalty" FromRole="Rental" ToRole="PenaltySystem" />
+        </EntityType>
+        <EntityType Name="RentalMotorcycle">
+          <Key>
+            <PropertyRef Name="RentalMotorcycleID" />
+          </Key>
+          <Property Name="RentalMotorcycleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RentalID" Type="Int32" Nullable="false" />
+          <Property Name="MotorcycleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Motorcycle" Relationship="Self.FK__RentalMot__Motor__5812160E" FromRole="RentalMotorcycle" ToRole="Motorcycle" />
+          <NavigationProperty Name="Rental" Relationship="Self.FK__RentalMot__Renta__571DF1D5" FromRole="RentalMotorcycle" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="RentalStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rental" Relationship="Self.FK__Rental__StatusID__534D60F1" FromRole="RentalStatus" ToRole="Rental" />
+        </EntityType>
+        <Association Name="FK__Payment__Custome__6383C8BA">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rental__Customer__52593CB8">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Positi__4CA06362">
+          <End Role="EmployeePosition" Type="Self.EmployeePosition" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePosition">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Status__4D94879B">
+          <End Role="EmployeeStatus" Type="Self.EmployeeStatus" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rental__Employee__5441852A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Motorcycl__Brand__3C69FB99">
+          <End Role="MotorcycleBrand" Type="Self.MotorcycleBrand" Multiplicity="1" />
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotorcycleBrand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="Motorcycle">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Motorcycl__TypeI__3D5E1FD2">
+          <End Role="MotorcycleType" Type="Self.MotorcycleType" Multiplicity="1" />
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotorcycleType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Motorcycle">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RentalMot__Motor__5812160E">
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1" />
+          <End Role="RentalMotorcycle" Type="Self.RentalMotorcycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Motorcycle">
+              <PropertyRef Name="MotorcycleID" />
+            </Principal>
+            <Dependent Role="RentalMotorcycle">
+              <PropertyRef Name="MotorcycleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__RentalI__628FA481">
+          <End Role="Rental" Type="Self.Rental" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rental">
+              <PropertyRef Name="RentalID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="RentalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rental__StatusID__534D60F1">
+          <End Role="RentalStatus" Type="Self.RentalStatus" Multiplicity="1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentalStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RentalMot__Renta__571DF1D5">
+          <End Role="Rental" Type="Self.Rental" Multiplicity="1" />
+          <End Role="RentalMotorcycle" Type="Self.RentalMotorcycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rental">
+              <PropertyRef Name="RentalID" />
+            </Principal>
+            <Dependent Role="RentalMotorcycle">
+              <PropertyRef Name="RentalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RentalPenalty">
+          <End Role="PenaltySystem" Type="Self.PenaltySystem" Multiplicity="*" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Nochnie_Volki_OrenburgEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="DiscountSystem" EntityType="Self.DiscountSystem" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeePosition" EntityType="Self.EmployeePosition" />
+          <EntitySet Name="EmployeeStatus" EntityType="Self.EmployeeStatus" />
+          <EntitySet Name="Motorcycle" EntityType="Self.Motorcycle" />
+          <EntitySet Name="MotorcycleBrand" EntityType="Self.MotorcycleBrand" />
+          <EntitySet Name="MotorcycleType" EntityType="Self.MotorcycleType" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" />
+          <EntitySet Name="PenaltySystem" EntityType="Self.PenaltySystem" />
+          <EntitySet Name="Rental" EntityType="Self.Rental" />
+          <EntitySet Name="RentalMotorcycle" EntityType="Self.RentalMotorcycle" />
+          <EntitySet Name="RentalStatus" EntityType="Self.RentalStatus" />
+          <AssociationSet Name="FK__Payment__Custome__6383C8BA" Association="Self.FK__Payment__Custome__6383C8BA">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rental__Customer__52593CB8" Association="Self.FK__Rental__Customer__52593CB8">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Positi__4CA06362" Association="Self.FK__Employee__Positi__4CA06362">
+            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Status__4D94879B" Association="Self.FK__Employee__Status__4D94879B">
+            <End Role="EmployeeStatus" EntitySet="EmployeeStatus" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rental__Employee__5441852A" Association="Self.FK__Rental__Employee__5441852A">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Motorcycl__Brand__3C69FB99" Association="Self.FK__Motorcycl__Brand__3C69FB99">
+            <End Role="MotorcycleBrand" EntitySet="MotorcycleBrand" />
+            <End Role="Motorcycle" EntitySet="Motorcycle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Motorcycl__TypeI__3D5E1FD2" Association="Self.FK__Motorcycl__TypeI__3D5E1FD2">
+            <End Role="MotorcycleType" EntitySet="MotorcycleType" />
+            <End Role="Motorcycle" EntitySet="Motorcycle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentalMot__Motor__5812160E" Association="Self.FK__RentalMot__Motor__5812160E">
+            <End Role="Motorcycle" EntitySet="Motorcycle" />
+            <End Role="RentalMotorcycle" EntitySet="RentalMotorcycle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__RentalI__628FA481" Association="Self.FK__Payment__RentalI__628FA481">
+            <End Role="Rental" EntitySet="Rental" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rental__StatusID__534D60F1" Association="Self.FK__Rental__StatusID__534D60F1">
+            <End Role="RentalStatus" EntitySet="RentalStatus" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentalMot__Renta__571DF1D5" Association="Self.FK__RentalMot__Renta__571DF1D5">
+            <End Role="Rental" EntitySet="Rental" />
+            <End Role="RentalMotorcycle" EntitySet="RentalMotorcycle" />
+          </AssociationSet>
+          <AssociationSet Name="RentalPenalty" Association="Self.RentalPenalty">
+            <End Role="PenaltySystem" EntitySet="PenaltySystem" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Nochnie_Volki_OrenburgModelContainer" CdmEntityContainer="Nochnie_Volki_OrenburgEntities">
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DriverLicense" ColumnName="DriverLicense" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscountSystem">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.DiscountSystem">
+              <MappingFragment StoreEntitySet="DiscountSystem">
+                <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+                <ScalarProperty Name="DiscountName" ColumnName="DiscountName" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeePosition">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.EmployeePosition">
+              <MappingFragment StoreEntitySet="EmployeePosition">
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeStatus">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.EmployeeStatus">
+              <MappingFragment StoreEntitySet="EmployeeStatus">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Motorcycle">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.Motorcycle">
+              <MappingFragment StoreEntitySet="Motorcycle">
+                <ScalarProperty Name="MotorcycleID" ColumnName="MotorcycleID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="DailyRate" ColumnName="DailyRate" />
+                <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MotorcycleBrand">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.MotorcycleBrand">
+              <MappingFragment StoreEntitySet="MotorcycleBrand">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MotorcycleType">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.MotorcycleType">
+              <MappingFragment StoreEntitySet="MotorcycleType">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PenaltySystem">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.PenaltySystem">
+              <MappingFragment StoreEntitySet="PenaltySystem">
+                <ScalarProperty Name="PenaltyID" ColumnName="PenaltyID" />
+                <ScalarProperty Name="PenaltyName" ColumnName="PenaltyName" />
+                <ScalarProperty Name="PenaltyAmount" ColumnName="PenaltyAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rental">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.Rental">
+              <MappingFragment StoreEntitySet="Rental">
+                <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentalMotorcycle">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.RentalMotorcycle">
+              <MappingFragment StoreEntitySet="RentalMotorcycle">
+                <ScalarProperty Name="RentalMotorcycleID" ColumnName="RentalMotorcycleID" />
+                <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+                <ScalarProperty Name="MotorcycleID" ColumnName="MotorcycleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentalStatus">
+            <EntityTypeMapping TypeName="Nochnie_Volki_OrenburgModel.RentalStatus">
+              <MappingFragment StoreEntitySet="RentalStatus">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="RentalPenalty" TypeName="Nochnie_Volki_OrenburgModel.RentalPenalty" StoreEntitySet="RentalPenalty">
+            <EndProperty Name="PenaltySystem">
+              <ScalarProperty Name="PenaltyID" ColumnName="PenaltyID" />
+            </EndProperty>
+            <EndProperty Name="Rental">
+              <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
