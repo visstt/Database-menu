@@ -13,14 +13,6 @@ namespace WpfApp2
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-
-            // Открываем окно TableSelectionWindow вместо MainWindow
-            TableSelectionWindow tableSelectionWindow = new TableSelectionWindow();
-            tableSelectionWindow.Show();
-            
-        }
     }
+
 }

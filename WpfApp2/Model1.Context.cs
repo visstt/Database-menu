@@ -38,5 +38,6 @@ namespace WpfApp2
         public virtual DbSet<Rental> Rental { get; set; }
         public virtual DbSet<RentalMotorcycle> RentalMotorcycle { get; set; }
         public virtual DbSet<RentalStatus> RentalStatus { get; set; }
+        public virtual DbSet<Auth> Auth { get; set; }
     }
 }

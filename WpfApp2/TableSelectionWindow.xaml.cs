@@ -27,11 +27,15 @@ namespace WpfApp2
         {
             InitializeComponent();
             // Инициализация подключения к базе данных
-            string connectionString = "Server=DESKTOP-B39KRR8;Database=Nochnie_Volki_Orenburg;Trusted_Connection=True;"; // Добавьте вашу строку подключения
+            string connectionString = "Server=DESKTOP-PFBB33O;Database=Nochnie_Volki_Orenburg;Trusted_Connection=True;"; // Добавьте вашу строку подключения
             connection = new SqlConnection(connectionString);
             LoadTableList();
         }
-
+        private void GenerateQRCode_Click(object sender, RoutedEventArgs e)
+        {
+            QRCodeGeneratorWindow qrCodeWindow = new QRCodeGeneratorWindow();
+            qrCodeWindow.Show();
+        }
         // Метод для загрузки списка таблиц
         private void LoadTableList()
         {

@@ -30,6 +30,7 @@
         <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__Rental__StatusID__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="Nochnie_Volki_OrenburgModel.FK__RentalMot__Renta__571DF1D5" ManuallyRouted="false" />
         <AssociationConnector Association="Nochnie_Volki_OrenburgModel.RentalPenalty" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Nochnie_Volki_OrenburgModel.Auth" Width="1.5" PointX="6.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
